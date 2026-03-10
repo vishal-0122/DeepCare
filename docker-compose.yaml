@@ -7,6 +7,8 @@ services:
     ports:
       - "8000:8000"
       - "8501:8501"
+    volumes:
+      - ./models:/app/models:ro
     environment:
       - MODEL_PATH=/app/models/best_model.pkl
       - SCALER_PATH=/app/models/scaler.pkl

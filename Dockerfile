@@ -21,8 +21,8 @@ COPY . .
 
 # Ensure models directory exists and copy model files
 RUN mkdir -p models
-COPY models/best_model.pkl models/best_model.pkl
-COPY models/scaler.pkl models/scaler.pkl
+# COPY models/best_model.pkl models/best_model.pkl
+# COPY models/scaler.pkl models/scaler.pkl
 
 # Expose ports
 EXPOSE 8000 8501
