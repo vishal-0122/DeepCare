@@ -1,0 +1,123 @@
+# Data- related configuration
+data:
+  patient_demographics: 
+    path: data/patient_demographics.csv
+    key: "patient_id"
+  patient_visits: 
+    path: data/patient_visits.csv
+    key: "patient_id"
+  hospital_logs: 
+    path: data/hospital_logs.xml
+    key: "patient_id"
+  target_column: "drop_off"
+
+# Data preprocessing configs
+preprocessing:
+  patient_demographics:
+    fillna:
+      avg_monthly_income: "mean"
+      categorical: "Unknown"
+    normalize_gender: true 
+    cap_chronic_conditions: 5
+    categorical_features:
+      - gender
+      - insurance
+      - marital_status
+      - education_level
+      - employment_status
+      - language_preference
+    numerical_features:
+      - age
+      - avg_monthly_income
+      - chronic_conditions
+
+  patient_visits:
+    fillna:
+      total_spent: 0
+      visit_duration: 0
+      visit_type: "Unknown"
+      department: "Unknown"
+      appointment_day: "Unknown"
+      drop_off: 0
+    cast_columns:
+      drop_off: "int"
+    categorical_features:
+      - visit_type
+      - department
+      - appointment_day
+    numerical_features:
+      - num_visits
+      - total_spent
+      - visit_duration
+      - time_in_waiting
+      - satisfaction_score
+
+  hospital_logs:
+    cast_columns:
+      patient_id: int 
+    timestamp_format: "%Y-%m-%d %H:%M"
+    features:
+      - log_count
+      - critical_logs
+      - unique_events
+      - most_recent_department
+    fillna:
+      log_count: 0
+      critical_logs: 0
+      unique_events: 0
+      most_recent_department: "Unknown"
+
+  feature_engineering:
+    encoding:
+      categorical: true
+    scaling: 
+      numerical: true
+    target: "drop_off"
+    
+# Mining(clustering) configs
+mining:
+  algorithm: "kmeans"
+  k: 3
+  seed: 42
+  features_suffix:
+    - "_scaled"
+    - "_encoded"
+  repartition: 4
+  prediction_col: "cluster"
+  output_segment_col: "patient_segment"
+
+# Balancing configs
+balancing:
+  method: "oversample_minority"
+  majority_class: 0
+  minority_class: 1
+  ratio: 0.043    # ~ 4.3% minority vs majority
+  seed: 42
+  shuffle: true
+  features_suffix: ["_scaled", "_encoded"]
+  include_cluster_feature: true
+  output_feature_col: "features"
+
+# Model training configs
+training:
+  feature_col: "features"
+  label_col: "drop_off"
+  train_test_split:
+    test_size: 0.2
+    seed: 42
+  n_trials: 30
+
+# Evaluation configs
+evaluation:
+  metrics:
+    binary: ["roc_auc", "accuracy", "f1", "precision", "recall"]
+  output_format: "table"
+  save_results: true              # if true, save evaluation metrics
+  results_path: "results/evaluation_metrics.csv"
+
+
+# Prediction configs
+prediction:
+  model_path: "models/best_model.pkl"
+  feature_col: "features"
+  output_path: "data/predictions.csv"

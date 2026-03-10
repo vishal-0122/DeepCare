@@ -1,0 +1,35 @@
+# Core ML & Data Handling
+pandas>=2.2.3,<3.0
+numpy>=2.1.2,<3.0
+scikit-learn>=1.5.1,<1.6
+xgboost>=1.7.6,<2.0
+optuna>=3.0.0,<4.0
+lxml>=5.3.0,<6.0
+
+# Model persistence / tracking
+joblib>=1.4.2,<2.0
+mlflow==2.22.2
+
+# Backend API
+fastapi==0.116.1
+uvicorn==0.35.0
+
+# Frontend UI
+streamlit==1.49.1
+requests>=2.32.3,<3.0
+
+# Testing
+pytest>=8.3.2,<9.0
+pytest-cov>=5.0.0,<6.0
+
+# Linting & Formatting
+black>=24.8.0,<25.0
+flake8>=7.1.1,<8.0
+
+# Config & Env
+python-dotenv>=1.0.1,<2.0
+pyyaml>=6.0.2,<7.0
+
+# Data Version Control
+dvc>=3.50.1,<4.0
+psycopg2-binary
