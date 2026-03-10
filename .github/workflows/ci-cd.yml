@@ -64,7 +64,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/deepcare:latest
-            ${{ secrets.DOCKER_USERNAME }}/deepcare:main-${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}:latest
+            ${{ secrets.DOCKER_USERNAME }}:main-${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
