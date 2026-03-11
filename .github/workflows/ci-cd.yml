@@ -60,7 +60,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:main-${{ github.sha }}
+            vishal0122/deepcare:latest
+            vishal0122/deepcare:main-${{ github.sha }}
+
           cache-from: type=gha
           cache-to: type=gha,mode=max
