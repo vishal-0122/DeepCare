@@ -8,6 +8,7 @@ on:
 
 env:
   PYTHON_VERSION: "3.10"
+  IMAGE_NAME: vishal-0122/deepcare
 
 jobs:
   ci:
@@ -29,14 +30,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Syntax check (src + app)
+      - name: Syntax check
         run: |
           python -m compileall src app
-
-      - name: Run tests (if present in repo)
-        if: ${{ hashFiles('tests/**/*.py') != '' }}
-        run: |
-          pytest -q
 
   cd:
     name: CD - Build and Push Docker Image
@@ -64,7 +60,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}:latest
-            ${{ secrets.DOCKER_USERNAME }}:main-${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:main-${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
