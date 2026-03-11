@@ -1,15 +1,20 @@
-# DeepCare: Patient Dropout Prediction System
+# DeepCare: Patient Drop-Off Prediction System
+
+[![CI/CD Pipeline](https://github.com/vishal-0122/DeepCare/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/vishal-0122/DeepCare/actions/workflows/ci-cd.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/vishal0122/deepcare?logo=docker)](https://hub.docker.com/r/vishal0122/deepcare)
 
 ## 📋 Overview
 
-**DeepCare** is an end-to-end machine learning pipeline that predicts patient dropout risk in healthcare settings using advanced data mining, feature engineering, and Bayesian optimization. The system processes patient demographics, hospital visit logs, and medical records to identify at-risk patients and enable proactive interventions.
+**DeepCare** is a production-ready machine learning system designed to **predict patient dropout risk in healthcare environments** by analyzing multi-source clinical data such as patient demographics, hospital visits, and operational logs. The platform integrates advanced feature engineering, patient segmentation, and automated hyperparameter optimization to identify high-risk patients and enable proactive intervention strategies.
+
+Built as a **full-stack MLOps project**, DeepCare demonstrates the complete lifecycle of a modern ML system — from data ingestion and model training to experiment tracking, containerized deployment, and real-time inference. The solution combines **MLflow for experiment management and model registry, FastAPI for scalable prediction APIs, Streamlit for interactive visualization, and Docker-based deployment with CI/CD automation**, making it suitable for real-world healthcare analytics workflows.
 
 ### Key Features
 - 🔍 **Multi-source Data Integration**: Combines patient demographics, visit history, and hospital logs
 - ⚙️ **Automated Feature Engineering**: Intelligent log-derived feature extraction
 - 🎯 **Patient Segmentation**: K-means clustering for cohort-based analysis
 - ⚖️ **Class Balancing**: Handles imbalanced datasets with strategic oversampling
-- 🔧 **Bayesian Optimization**: Automated hyperparameter tuning via Optuna
+- 📊 **Experiment Tracking & Model Registry**: MLflow-powered experiment tracking, model versioning, and centralized model management
 - 🚀 **Production-Ready APIs**: FastAPI & Streamlit interfaces for predictions
 - 🐳 **Containerized Deployment**: Docker & CI/CD with GitHub Actions
 
@@ -31,7 +36,7 @@ Patient Segmentation (mining.py)
     ↓
 Class Balancing (balancing.py)
     ↓
-Model Training with HPO (train.py)
+Model Training (train.py)
     ↓
 Evaluation & Metrics (evaluate.py)
     ↓
@@ -47,7 +52,7 @@ DeepCare/
 │   ├── preprocess.py             # Feature engineering, encoding, scaling
 │   ├── mining.py                 # K-means clustering for patient segmentation
 │   ├── balancing.py              # Handle class imbalance via oversampling
-│   ├── train.py                  # Model training with Optuna-based hyperparameter tuning
+│   ├── train.py                  # Model training 
 │   ├── evaluate.py               # Model evaluation & metrics computation
 │   ├── predict.py                # Batch & real-time prediction generation
 │   ├── tune.py                   # Advanced tuning utilities
@@ -70,7 +75,7 @@ DeepCare/
 
 ## 📊 Data Requirements
 
-The dataset files are **not included** in this repository due to size and privacy constraints (HIPAA compliance).
+The dataset files are **not included** in this repository due to size constraints.
 
 ### Download Dataset
 📥 **[Download from Google Drive](https://drive.google.com/drive/folders/1HT7y8O2PJTfMkYw8u0K_1e4_KcYyvaN5?usp=sharing)**
@@ -137,7 +142,7 @@ docker-compose up --build
 | **preprocess.py** | Feature extraction from logs, categorical encoding, numerical scaling |
 | **mining.py** | K-means clustering for patient cohort segmentation |
 | **balancing.py** | Handles class imbalance via minority oversampling |
-| **train.py** | Trains models with Bayesian hyperparameter optimization (Optuna) |
+| **train.py** | Trains models  |
 | **evaluate.py** | Computes precision, recall, F1, ROC-AUC metrics |
 | **predict.py** | Generates batch/real-time dropout risk predictions |
 | **config.py** | Parses YAML configuration files |
@@ -166,7 +171,7 @@ mining:
   algorithm: "kmeans"
   
 training:
-  n_trials: 30  # Bayesian optimization iterations
+  n_trials: 30  
 ```
 
 ---
@@ -178,7 +183,7 @@ training:
 3. **Preprocessing** → Encode categoricals, scale numericals, save scaler for deployment
 4. **Mining** → Segment patients into K cohorts
 5. **Balancing** → Oversample minority dropout class
-6. **Training** → Hyperparameter tuning via Optuna, select best model
+6. **Training** → MLFlow experiment tracking and, select best model (model registry)
 7. **Evaluation** → Compute metrics on test set
 8. **Prediction** → Generate dropout risk scores for all patients
 9. **Deployment** → Serve via FastAPI/Streamlit
