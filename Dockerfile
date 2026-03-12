@@ -1,4 +1,4 @@
-# Use official Python image
+# Use stable Python slim image
 FROM python:3.13-slim
 
 # Set environment variables
@@ -9,23 +9,21 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y gcc && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends gcc && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install
 COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip --no-cache-dir && \
+    pip install -r requirements.txt --no-cache-dir
 
 # Copy project files
 COPY . .
 
-# Ensure models directory exists and copy model files
+# Ensure models directory exists
 RUN mkdir -p models
-# COPY models/best_model.pkl models/best_model.pkl
-# COPY models/scaler.pkl models/scaler.pkl
 
 # Expose ports
 EXPOSE 8000 8501
 
 # Start FastAPI and Streamlit
-CMD ["sh", "-c", "uvicorn app.serve:app --host 0.0.0.0 --port 8000 & streamlit run app/app.py --server.port 8501 --server.address 0.0.0.0"]
+CMD ["sh", "-c", "uvicorn app.app:app --host 0.0.0.0 --port 8000 & streamlit run app/serve.py --server.port 8501 --server.address 0.0.0.0"]
