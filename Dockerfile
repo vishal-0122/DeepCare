@@ -25,5 +25,5 @@ RUN mkdir -p models
 # Expose ports
 EXPOSE 8000 8501
 
-# Start FastAPI and Streamlit
-CMD ["sh", "-c", "uvicorn app.app:app --host 0.0.0.0 --port 8000 & streamlit run app/serve.py --server.port 8501 --server.address 0.0.0.0"]
+# FastAPI = serve.py, Streamlit = app.py
+CMD ["sh", "-c", "uvicorn app.serve:app --host 0.0.0.0 --port 8000 & streamlit run app/app.py --server.port 8501 --server.address 0.0.0.0"]
