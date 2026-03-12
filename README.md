@@ -5,7 +5,7 @@
 
 ## 📋 Overview
 
-**DeepCare** is a production-ready machine learning system designed to **predict patient dropout risk in healthcare environments** by analyzing multi-source clinical data such as patient demographics, hospital visits, and operational logs. The platform integrates advanced feature engineering, patient segmentation, and automated hyperparameter optimization to identify high-risk patients and enable proactive intervention strategies.
+**DeepCare** is a production-ready machine learning system designed to **predict patient dropout risk in healthcare environments** by analyzing diverse patient and operational data. The platform integrates advanced feature engineering, patient segmentation, and automated hyperparameter optimization to identify high-risk patients and enable proactive intervention strategies.
 
 Built as a **full-stack MLOps project**, DeepCare demonstrates the complete lifecycle of a modern ML system — from data ingestion and model training to experiment tracking, containerized deployment, and real-time inference. The solution combines **MLflow for experiment management and model registry, FastAPI for scalable prediction APIs, Streamlit for interactive visualization, and Docker-based deployment with CI/CD automation**, making it suitable for real-world healthcare analytics workflows.
 
@@ -64,7 +64,7 @@ DeepCare/
 ├── configs/
 │   └── config.yaml               # Pipeline configuration (data paths, model params)
 ├── notebooks/
-│   └── deepcare.ipynb            # Full exploratory workflow & analysis
+│   └── deepcare.ipynb            # Full exploratory workflow & analysis using pyspark
 ├── docker-compose.yaml           # Multi-service containerization (FastAPI + Streamlit)
 ├── Dockerfile                    # Container image definition
 ├── requirements.txt              # Python dependencies
@@ -192,7 +192,7 @@ training:
 
 ## 📊 Exploratory Notebook
 
-For full workflow walkthrough, analysis, and visualizations:
+For full workflow walkthrough, analysis, and visualizations implemented in pyspark:
 👉 Open `notebooks/deepcare.ipynb`
 
 ---
