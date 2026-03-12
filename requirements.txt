@@ -4,7 +4,7 @@ mlflow_skinny==3.4.0
 mlflow_tracing==3.4.0
 numpy==2.4.3
 optuna==4.6.0
-pandas==3.0.1
+pandas==2.2.3
 pydantic==2.12.5
 pytest==8.4.2
 PyYAML==6.0.3
