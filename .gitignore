@@ -47,4 +47,4 @@ Thumbs.db
 .idea/
 
 # AWS EC2 key
-deepcare-key.pem
+*.pem
