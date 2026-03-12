@@ -45,3 +45,6 @@ credentials.json
 Thumbs.db
 .vscode/
 .idea/
+
+# AWS EC2 key
+deepcare-key.pem
