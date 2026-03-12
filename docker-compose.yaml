@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   deepcare-app:
-    build: .
+    image: vishal0122/deepcare:main-<commit_sha>
+    pull_policy: always
     container_name: deepcare-app
     ports:
       - "8000:8000"
