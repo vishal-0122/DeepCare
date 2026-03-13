@@ -14,7 +14,7 @@ Built as a **full-stack MLOps project**, DeepCare demonstrates the complete life
 
 ## Product Preview
 
-![DeepCare Frontend]("C:\Users\Asus\Pictures\Screenshots\Screenshot 2026-03-13 183314.png")
+![DeepCare Frontend]("<img width="1872" height="1015" alt="Image" src="https://github.com/user-attachments/assets/0fcb8a73-2982-480b-8579-1a55f943d20b" />")
 
 ### Key Features
 - 🔍 **Multi-source Data Integration**: Combines patient demographics, visit history, and hospital logs
