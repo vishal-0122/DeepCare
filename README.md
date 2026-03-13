@@ -9,6 +9,12 @@
 
 Built as a **full-stack MLOps project**, DeepCare demonstrates the complete lifecycle of a modern ML system — from data ingestion and model training to experiment tracking, containerized deployment, and real-time inference. The solution combines **MLflow for experiment management and model registry, FastAPI for scalable prediction APIs, Streamlit for interactive visualization, and Docker-based deployment with CI/CD automation**, making it suitable for real-world healthcare analytics workflows.
 
+## Live Demo
+🔗 [Open DeepCare App](http://15.206.119.85:8501/)
+
+## Product Preview
+![DeepCare Frontend]("C:\Users\Asus\Pictures\Screenshots\Screenshot 2026-03-13 183314.png")
+
 ### Key Features
 - 🔍 **Multi-source Data Integration**: Combines patient demographics, visit history, and hospital logs
 - ⚙️ **Automated Feature Engineering**: Intelligent log-derived feature extraction
